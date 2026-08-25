@@ -56,19 +56,21 @@ public class ProdutoService {
     }
 
     @Transactional
-    public ProdutoResponseDto updatePruduto(Long id, ProdutoRequestDto requestDto) {
+    public ProdutoResponseDto updateProduto(Long id, ProdutoRequestDto requestDto) {
 
         try {
             Produto produto = produtoRepository.getReferenceById(id);
             copyDtoToProduto(requestDto, produto);
             produto = produtoRepository.save(produto);
             return new ProdutoResponseDto(produto);
-        }  catch (DataIntegrityViolationException e) {
-            throw new DatabaseException("recurso não encontrado. ID: " + id);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Recurso não encontrado. ID: " + id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Não foi possível atualizar o produto. ID: " + id);
         }
     }
 
-    @Transactional(propagation = Propagation.SUPPORTS)
+    @Transactional
     public void deleteProdutoById(Long id) {
 
         if (!produtoRepository.existsById(id)) {

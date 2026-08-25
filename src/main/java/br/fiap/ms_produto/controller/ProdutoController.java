@@ -61,7 +61,7 @@ public class ProdutoController {
     public ResponseEntity<ProdutoResponseDto> updateProduto(@PathVariable Long id,
                                                     @RequestBody @Valid ProdutoRequestDto requestDto){
 
-        ProdutoResponseDto produtoDTO = produtoService.updatePruduto(id, requestDto);
+        ProdutoResponseDto produtoDTO = produtoService.updateProduto(id, requestDto);
 
         return ResponseEntity.ok(produtoDTO);
     }

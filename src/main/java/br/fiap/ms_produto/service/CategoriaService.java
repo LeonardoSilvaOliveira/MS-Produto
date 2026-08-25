@@ -62,7 +62,7 @@ public class CategoriaService {
         }
     }
 
-    @Transactional(propagation = Propagation.SUPPORTS)
+    @Transactional
     public void deleteCategoriaById(Long id) {
 
         if (!categoriaRepository.existsById(id)) {
