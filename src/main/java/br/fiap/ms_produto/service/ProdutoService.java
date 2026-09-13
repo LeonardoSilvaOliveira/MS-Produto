@@ -89,7 +89,7 @@ public class ProdutoService {
         produto.setValor(requestDto.getValor());
 
         Categoria categoria = categoriaRepository.findById(requestDto.getCategoriaId()).orElseThrow(
-                () -> new DatabaseException("Não foi possivel salvar o produto. categoria inesxistente" +
+                () -> new DatabaseException("Não foi possível salvar o produto. Categoria inexistente" +
                         " (ID: " + requestDto.getCategoriaId() + ")")
         );
 
