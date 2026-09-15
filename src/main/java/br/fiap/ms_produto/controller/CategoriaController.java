@@ -21,16 +21,16 @@ public class CategoriaController {
     private CategoriaService categoriaService;
 
     @GetMapping
-    public ResponseEntity<List<CategoriaDTO>> getAllCategorias() {
-        List<CategoriaDTO> categorias = categoriaService.findAllCategorias();
+    public ResponseEntity<List<CategoriaResponseDto>> getAllCategorias() {
+        List<CategoriaResponseDto> categorias = categoriaService.findAllCategorias();
 
         return ResponseEntity.ok(categorias);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CategoriaDTO> getCategoriaById(@PathVariable Long id) {
+    public ResponseEntity<CategoriaResponseDto> getCategoriaById(@PathVariable Long id) {
 
-        CategoriaDTO categoriaDto = categoriaService.findCategoriaById(id);
+        CategoriaResponseDto categoriaDto = categoriaService.findCategoriaById(id);
 
         return ResponseEntity.ok(categoriaDto);
     }

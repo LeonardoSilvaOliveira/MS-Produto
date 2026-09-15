@@ -23,21 +23,21 @@ public class CategoriaService {
     private CategoriaRepository categoriaRepository;
 
     @Transactional(readOnly = true)
-    public List<CategoriaDTO> findAllCategorias() {
+    public List<CategoriaResponseDto> findAllCategorias() {
 
         return categoriaRepository.findAll()
-                .stream().map(CategoriaDTO::new).toList();
+                .stream().map(CategoriaResponseDto::new).toList();
 
     }
 
     @Transactional(readOnly = true)
-    public CategoriaDTO findCategoriaById(Long id) {
+    public CategoriaResponseDto findCategoriaById(Long id) {
 
         Categoria categoria = categoriaRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Recurso não encontrado. ID: " + id)
         );
 
-        return new CategoriaDTO(categoria);
+        return new CategoriaResponseDto(categoria);
     }
 
     @Transactional

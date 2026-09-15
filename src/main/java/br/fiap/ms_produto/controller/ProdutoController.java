@@ -1,6 +1,5 @@
 package br.fiap.ms_produto.controller;
 
-import br.fiap.ms_produto.dto.ProdutoDTO;
 import br.fiap.ms_produto.dto.ProdutoRequestDto;
 import br.fiap.ms_produto.dto.ProdutoResponseDto;
 import br.fiap.ms_produto.service.ProdutoService;
@@ -28,17 +27,17 @@ public class ProdutoController {
 //    }
 
     @GetMapping
-    public ResponseEntity<List<ProdutoDTO>> getAllProdutos(){
+    public ResponseEntity<List<ProdutoResponseDto>> getAllProdutos(){
 
-        List<ProdutoDTO> list = produtoService.findAllProdutos();
+        List<ProdutoResponseDto> list = produtoService.findAllProdutos();
 
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProdutoDTO> getProdutoById(@PathVariable Long id){
+    public ResponseEntity<ProdutoResponseDto> getProdutoById(@PathVariable Long id){
 
-        ProdutoDTO produtoDTO = produtoService.findProdutoById(id);
+        ProdutoResponseDto produtoDTO = produtoService.findProdutoById(id);
 
         return ResponseEntity.ok(produtoDTO);
     }

@@ -29,21 +29,21 @@ public class ProdutoService {
     private CategoriaRepository categoriaRepository;
 
     @Transactional(readOnly = true)
-    public List<ProdutoDTO> findAllProdutos() {
+    public List<ProdutoResponseDto> findAllProdutos() {
 
         List<Produto> produtos = produtoRepository.findAll();
 
-        return produtos.stream().map(ProdutoDTO::new).toList();
+        return produtos.stream().map(ProdutoResponseDto::new).toList();
     }
 
     @Transactional(readOnly = true)
-    public ProdutoDTO findProdutoById(Long id) {
+    public ProdutoResponseDto findProdutoById(Long id) {
 
         Produto produto = produtoRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Recurso não encontrado. ID: " + id)
         );
 
-        return new ProdutoDTO(produto);
+        return new ProdutoResponseDto(produto);
     }
 
     @Transactional
